@@ -1,50 +1,64 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+Version change: unratified scaffold → 1.0.0
+Modified principles: none; established six new principles (I–VI below) from the unratified scaffold.
+Added sections: Planning and Scope; Quality Gate.
+Removed sections: none.
+Follow-up TODO: Confirm the original ratification date.
+-->
+
+# Curso-PSWE-07 Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. SIMPLICITY FIRST (YAGNI)
+Implement only what the spec requires and choose the simplest solution that works. Do not add
+features, abstractions, configuration options, or dependencies "just in case". Any added complexity
+MUST be justified in writing in the plan. Rationale: avoiding speculative work keeps delivery focused
+and maintainable.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. SIMPLE, CLEAR DESIGN
+Functions and modules MUST be small and have a single responsibility. Names MUST clearly express
+intent. Avoid duplication only when it is real; do not create an abstraction for a single use, and
+do not optimize prematurely. Rationale: clear, focused code is easier to understand and change.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. STRUCTURED ARCHITECTURE
+Code MUST be separated into UI (screens and components), application logic (task operations), and
+persistence (storage) layers. Dependencies MUST flow UI → logic → persistence. UI code MUST NOT
+access storage directly. Persistence MUST be hidden behind a small interface that can be replaced
+or faked in tests. Rationale: explicit boundaries enable independent testing and replacement.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. TEST-DRIVEN DEVELOPMENT (NON-NEGOTIABLE)
+Development MUST follow Red-Green-Refactor: write a failing test, make it pass with the minimum code,
+then refactor. Production code MUST have a test that required it. Business logic MUST have unit
+tests, and each user story MUST have at least one acceptance test mirroring its acceptance scenarios.
+Tests MUST be fast and independent. Rationale: test-first development verifies behavior while
+limiting regressions.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. SPEC IS THE SOURCE OF TRUTH
+Every implementation task MUST trace to a requirement in the spec; anything not specified is out of
+scope. Ambiguous requirements MUST be clarified before implementation. Rationale: traceability keeps
+implementation aligned with agreed user needs.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### VI. DEPENDENCIES AND QUALITY
+Prefer the standard library and platform features. Add a third-party dependency only when it clearly
+removes more complexity than it adds. Code MUST pass linting and all tests before it is considered
+done. Rationale: restrained dependencies and enforced checks reduce maintenance risk.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Planning and Scope
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+Plans MUST include a "Constitution Check" that verifies compliance with these principles before
+implementation begins.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Quality Gate
+
+Work MUST NOT be considered complete until linting and all tests pass.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution overrides other practices. Amendments MUST include a written rationale and a
+version bump. Versioning follows semantic versioning: MAJOR for backward-incompatible governance
+changes, MINOR for new principles or materially expanded guidance, and PATCH for non-semantic
+clarifications. Plans and reviews MUST verify compliance with this constitution.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: TODO(RATIFICATION_DATE): Confirm original adoption date. | **Last Amended**: 2026-10-26
